@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
-
+import sys
+sys.path.append("./")  # Replace with your actual path
 import torch
 import torch.nn as nn
 
@@ -29,7 +30,8 @@ def main():
     
     print(f"Dataset shape: {X.shape}, Target shape: {y.shape}")
     print(f"Features: {feature_names}")
-    
+    X = X[:1000]
+    y = y[:1000]
     # Prepare data
     print("\nPreparing data...")
     X_train, X_test, y_train, y_test, scaler_X, scaler_y = prepare_data(
@@ -40,7 +42,7 @@ def main():
     # Create model
     print("\nCreating Bayesian Neural Network...")
     input_dim = X_train.shape[1]
-    hidden_dims = [64, 32]  # Network architecture
+    hidden_dims = [64, 32, 16]  # Network architecture
     model = BayesianRegressor(input_dim=input_dim, hidden_dims=hidden_dims, output_dim=1)
     
     print(f"Model architecture: Input({input_dim}) -> Hidden{hidden_dims} -> Output(1)")
@@ -48,7 +50,7 @@ def main():
     # Create trainer
     trainer = BayesianRegressionTrainer(
         model=model,
-        learning_rate=0.01
+        learning_rate=0.001
     )
     
     # Train the model
@@ -59,7 +61,7 @@ def main():
         X_val=X_test,  # Using test set as validation for simplicity
         y_val=y_test,
         batch_size=64,
-        epochs=500,
+        epochs=1000,
         samples_nbr=3  # Number of MC samples for ELBO
     )
     

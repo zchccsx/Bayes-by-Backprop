@@ -1,3 +1,7 @@
+import sys
+sys.path.append("./")  # Replace with your actual path
+# print(sys.path)
+import Bayes  # Now you can import and use it
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +17,7 @@ from Bayes.utils import (
 np.random.seed(42)
 torch.manual_seed(42)
 
-def generate_toy_data(n_samples=200, noise_level=0.3, test_gaps=True):
+def generate_toy_data(n_samples=500, noise_level=0.3, test_gaps=True):
     """
     Generate a synthetic 1D regression dataset with optional test gaps.
     
@@ -69,7 +73,7 @@ def main():
     # Create a trainer
     trainer = BayesianRegressionTrainer(
         model=model,
-        learning_rate=0.01
+        learning_rate=0.001
     )
     
     # Train the model
