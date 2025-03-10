@@ -152,7 +152,7 @@ def plot_1d_regression_with_uncertainty(X_train, y_train, X_test, y_test,
             X_dense.flatten(), 
             (y_pred_mean - std_mult * y_pred_std).flatten(), 
             (y_pred_mean + std_mult * y_pred_std).flatten(), 
-            color='red', alpha=alphas[i], 
+            color='gray', alpha=alphas[i], 
             label=f'{std_mult}σ ({int(100 * (1 - np.exp(-0.5 * std_mult**2)))}% CI)'
         )
     
