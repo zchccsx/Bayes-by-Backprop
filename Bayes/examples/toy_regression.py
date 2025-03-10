@@ -1,7 +1,7 @@
 import sys
 sys.path.append("./")  # Replace with your actual path
 # print(sys.path)
-import Bayes  # Now you can import and use it
+
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
