@@ -138,8 +138,8 @@ def plot_1d_regression_with_uncertainty(X_train, y_train, X_test, y_test,
     plt.figure(figsize=(14, 8))
     
     # Plot data points
-    plt.scatter(X_train, y_train, c='blue', s=20, alpha=0.6, label='Training Data')
-    plt.scatter(X_test, y_test, c='green', s=20, alpha=0.6, label='Test Data')
+    plt.scatter(X_train, y_train, c='blue', s=20, label='Training Data')
+    plt.scatter(X_test, y_test, c='orange', s=20, label='Test Data')
     
     # Plot prediction and multiple confidence intervals
     plt.plot(X_dense, y_pred_mean, 'r-', lw=2, label='BNN Prediction')
