@@ -1,63 +1,17 @@
-# Bayes: Bayesian Neural Networks for Regression
+# Bayes by Backprop
 
-This repository implements Bayesian Neural Networks (BNNs) for regression tasks using the **Bayes by Backprop** technique. BNNs provide not just point predictions but also uncertainty estimates, which are crucial for many real-world applications.
-
-## Key Features
-
-- **Probabilistic Weights**: Instead of single-point estimates, the network represents weights as probability distributions
-- **Uncertainty Quantification**: Get confidence intervals for predictions
-- **Automatic Regularization**: Weight uncertainty naturally prevents overfitting
-- **Flexible Architecture**: Easy-to-customize neural network architecture
-- **Feature Importance Analysis**: Analyze which features contribute most to predictive uncertainty
+A Bayesian Neural Network framework for regression tasks implemented in PyTorch. This framework provides tools for uncertainty estimation in neural networks through variational inference.
 
 ## Installation
 
-First, clone this repository:
-
 ```bash
-git clone https://github.com/yourusername/Bayes-by-Backprop.git
-cd Bayes-by-Backprop
+pip install bayes-regression
 ```
 
 Then install the required dependencies:
 
 ```bash
-pip install -r requirements.txt
-```
-
-## Quick Start
-
-Run one of the example scripts to see BNNs in action:
-
-```bash
-# Real-world dataset example
-python -m Bayes.examples.california_housing_regression
-
-# Toy 1D regression example with visualization
-python -m Bayes.examples.toy_regression
-```
-
-## Framework Structure
-
-The implementation follows a modular structure:
-
-```
-Bayes/
-├── modules/             # Bayesian neural network layers
-│   ├── base_bayesian_module.py  # Base class for Bayesian modules
-│   ├── linear_bayesian_layer.py # Bayesian linear layer
-│   └── weight_sampler.py        # Weight sampling utilities
-├── losses/              # Loss functions
-│   └── kl_divergence.py         # KL divergence calculation
-├── models/              # Model implementations
-│   └── regression.py            # Bayesian regressor model
-├── utils/               # Utilities
-│   ├── variational_estimator.py # Variational inference decorator
-│   ├── regression_trainer.py    # Trainer for regression models
-│   └── data_utils.py            # Data processing utilities
-└── examples/            # Example scripts
-    ├── california_housing_regression.py  # Real-world dataset example
-    └── toy_regression.py                 # 1D toy example
+pip install git+https://github.com/zchccsx/Bayes-by-Backprop.git
 ```
 
 ## Usage
@@ -65,20 +19,13 @@ Bayes/
 ### Creating a Model
 
 ```python
-from Bayes.models import BayesianRegressor
+import Bayes
+from Bayes import BayesianLinear, BayesianRegressor
 
-# Create a Bayesian Neural Network
-model = BayesianRegressor(
-    input_dim=X_train.shape[1],  # Number of features
-    hidden_dims=[64, 32],        # Hidden layer dimensions
-    output_dim=1                 # Output dimension (1 for regression)
-)
-```
+# Create a Bayesian neural network
+model = BayesianRegressor(input_dim=10, hidden_dims=[32, 16], output_dim=1)
 
 ### Training the Model
-
-```python
-from Bayes.utils import BayesianRegressionTrainer
 
 # Create trainer
 trainer = BayesianRegressionTrainer(
