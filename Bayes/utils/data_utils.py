@@ -110,7 +110,7 @@ def plot_predictions(y_true, y_pred_mean, y_pred_std, std_multiplier=2, max_samp
     # Plot predictions and confidence intervals
     plt.scatter(x, y, color='blue', alpha=0.7, label='True Values')
     plt.scatter(x, means, color='red', alpha=0.7, label='Predictions')
-    plt.fill_between(x, ci_lower, ci_upper, color='red', alpha=0.2, label=f'{std_multiplier}σ Confidence Interval')
+    plt.fill_between(x, ci_lower, ci_upper, color='gray', alpha=0.2, label=f'{std_multiplier}σ Confidence Interval')
     
     # Customize plot
     plt.xlabel('Sample Index')

@@ -1,8 +1,3 @@
-import sys
-sys.path.append("./")  # Replace with your actual path
-
-
-
 
 import Bayes
 
